@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Upload Bank Statement{% endblock title %}
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg mt-10">
+        <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">Upload Bank Statement</h1>
+        <p class="mt-2 text-sm text-gray-600 text-center">
+            Upload a CSV file of your bank transactions
+        </p>
+        <form action="{% url 'upload_csv' %}" method="post" enctype="multipart/form-data" class="space-y-6">
+            {% csrf_token %}
+            <div class="space-y-4">
+                <label for="csv_file" class="block text-gray-700 font-medium text-sm">CSV File</label>
+                <input type="file" name="csv_file" id="csv_file" accept=".csv"
+                       class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+
+                <div class="text-center mt-4">
+                    <button type="submit"
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition">
+                        Upload
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'dashboard' %}"
+               class="text-indigo-600 hover:text-indigo-500 text-sm font-medium transition duration-150 ease-in-out">
+                ← Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

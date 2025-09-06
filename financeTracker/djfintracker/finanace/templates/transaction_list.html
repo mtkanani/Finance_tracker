@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Transactions 
+{% endblock title%}
+{% block content %}
+<a href="{% url 'export_transaction'%}" class="ml-4 my-4 inline-block px-6 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+    Generate Report
+</a>
+<h1 class="text-xl font-bold">Transaction List </h1>
+<table class="min-w-full table-auto border-collapse border border-gray-300">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="px-4 py-2 border border-gray-300">Date</th>
+            <th class="px-4 py-2 border border-gray-300">Title</th>
+            <th class="px-4 py-2 border border-gray-300">Amount</th>
+            <th class="px-4 py-2 border border-gray-300">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in transaction %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2 border border-gray-300">
+                    {{t.date}}
+                </td>
+                <td class="px-4 py-2 border border-gray-300">
+                    {{t.title}}
+                </td>
+                <td class="px-4 py-2 border border-gray-300">
+                    {{t.amount}}
+                </td>
+                <td class="px-4 py-2 border border-gray-300">
+                    {% if t.transaction_type == 'Income' %}
+                        Credit
+                    {% else%}
+                        Debit
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
