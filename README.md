@@ -45,3 +45,5 @@ Analytic graph income vs expence were you analysis
 <img width="1665" height="722" alt="Screenshot 2025-09-06 112150" src="https://github.com/user-attachments/assets/dd843f25-53c4-4ec2-9475-6e17653d9f8f" />
 
 Analytic graph income vs expence monthly spending
+
+
